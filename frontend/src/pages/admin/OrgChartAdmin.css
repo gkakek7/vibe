@@ -302,3 +302,135 @@
   cursor: pointer;
 }
 .form-field select:focus { border-color: #1a73e8; }
+
+/* ── 탭 메뉴 ── */
+.admin-tabs {
+  display: flex;
+  border-bottom: 2px solid #eee;
+  padding: 0 24px;
+  background: #fafafa;
+}
+
+.admin-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  padding: 11px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+.admin-tab:hover { color: #1a73e8; }
+.admin-tab.active {
+  color: #1a73e8;
+  border-bottom-color: #1a73e8;
+}
+
+/* ── 직급 관리 ── */
+.position-admin {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+}
+
+.position-list-panel {
+  width: 340px;
+  flex-shrink: 0;
+  border-right: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 16px;
+  overflow: hidden;
+}
+
+.position-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #444;
+}
+
+.hint {
+  font-size: 11px;
+  color: #aaa;
+}
+
+.position-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.position-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 10px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+.position-item:hover { background: #f8faff; }
+.position-item.selected { background: #e3eeff; border-color: #c5d8f8; }
+
+.position-rank {
+  width: 22px;
+  height: 22px;
+  background: #e8f0fe;
+  color: #1a73e8;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.position-name {
+  flex: 1;
+  font-size: 13px;
+  color: #333;
+  font-weight: 500;
+}
+
+.position-item-actions {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.order-btn {
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 2px 7px;
+  cursor: pointer;
+  color: #555;
+  transition: background 0.15s, color 0.15s;
+}
+.order-btn:hover:not(:disabled) { background: #1a73e8; color: #fff; border-color: #1a73e8; }
+.order-btn:disabled { opacity: 0.3; cursor: default; }
+
+.position-form-panel {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+}

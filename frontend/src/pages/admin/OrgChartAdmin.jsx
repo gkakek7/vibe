@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import api from '../../api/axios';
+import PositionAdmin from './PositionAdmin';
 import './OrgChartAdmin.css';
 
 const PANEL = { IDLE: 'idle', DEPT_ADD: 'dept-add', DEPT_EDIT: 'dept-edit', EMP_LIST: 'emp-list', EMP_FORM: 'emp-form' };
@@ -37,6 +38,7 @@ function DeptNode({ dept, selectedId, onSelect, onAdd, onEdit, onDelete }) {
 }
 
 export default function OrgChartAdmin({ onClose }) {
+  const [activeTab, setActiveTab] = useState('org');
   const [tree, setTree]           = useState([]);
   const [panel, setPanel]         = useState(PANEL.IDLE);
   const [selectedDept, setSelectedDept] = useState(null);
@@ -280,27 +282,44 @@ export default function OrgChartAdmin({ onClose }) {
     <div className="admin-overlay" onClick={(e) => e.target === e.currentTarget && onClose()}>
       <div className="admin-modal">
         <div className="admin-modal-header">
-          <h2>조직도 관리</h2>
+          <h2>관리자</h2>
           <button className="close-btn" onClick={onClose}>✕</button>
         </div>
+
+        {/* 탭 메뉴 */}
+        <div className="admin-tabs">
+          <button className={`admin-tab ${activeTab === 'org' ? 'active' : ''}`} onClick={() => setActiveTab('org')}>
+            조직도 관리
+          </button>
+          <button className={`admin-tab ${activeTab === 'pos' ? 'active' : ''}`} onClick={() => setActiveTab('pos')}>
+            직급 관리
+          </button>
+        </div>
+
         <div className="admin-modal-body">
-          <div className="admin-tree-panel">
-            <button className="add-root-btn" onClick={handleAddRoot}>+ 최상위 부서 추가</button>
-            <div className="admin-tree">
-              {tree.length === 0 ? (
-                <p className="empty-msg">등록된 부서가 없습니다.</p>
-              ) : (
-                tree.map((dept) => (
-                  <DeptNode key={dept.id} dept={dept} selectedId={selectedDept?.id}
-                    onSelect={handleSelectDept} onAdd={handleAddChild}
-                    onEdit={handleEditDept} onDelete={handleDeleteDept} />
-                ))
-              )}
-            </div>
-          </div>
-          <div className="admin-form-panel">
-            {renderRightPanel()}
-          </div>
+          {activeTab === 'org' ? (
+            <>
+              <div className="admin-tree-panel">
+                <button className="add-root-btn" onClick={handleAddRoot}>+ 최상위 부서 추가</button>
+                <div className="admin-tree">
+                  {tree.length === 0 ? (
+                    <p className="empty-msg">등록된 부서가 없습니다.</p>
+                  ) : (
+                    tree.map((dept) => (
+                      <DeptNode key={dept.id} dept={dept} selectedId={selectedDept?.id}
+                        onSelect={handleSelectDept} onAdd={handleAddChild}
+                        onEdit={handleEditDept} onDelete={handleDeleteDept} />
+                    ))
+                  )}
+                </div>
+              </div>
+              <div className="admin-form-panel">
+                {renderRightPanel()}
+              </div>
+            </>
+          ) : (
+            <PositionAdmin />
+          )}
         </div>
       </div>
     </div>

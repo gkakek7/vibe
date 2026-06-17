@@ -31,7 +31,7 @@ public class EmployeeService {
     }
 
     public List<EmployeeResponse> getByDepartment(Long departmentId) {
-        return employeeRepository.findByDepartmentId(departmentId).stream()
+        return employeeRepository.findByDepartmentIdOrderByPositionPriorityAndId(departmentId).stream()
                 .map(EmployeeResponse::new)
                 .collect(Collectors.toList());
     }

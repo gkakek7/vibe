@@ -10,5 +10,9 @@ spring:
     show-sql: true
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
+jwt:
+  secret: ViBe-GrOuPwArE-S3cr3t-K3y-F0r-JWT-T0k3n-Auth3ntication-2024-Main
+  expiration: 86400000
+
 server:
   port: 8080

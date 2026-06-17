@@ -97,6 +97,7 @@
   transition: background 0.15s;
 }
 .admin-dept-row:hover { background: #f5f7ff; }
+.admin-dept-row.selected { background: #e3eeff; }
 
 .toggle {
   width: 16px;
@@ -115,7 +116,9 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  cursor: pointer;
 }
+.dept-name:hover { color: #1a73e8; }
 
 .dept-actions {
   display: flex;
@@ -217,3 +220,84 @@
   transition: background 0.2s;
 }
 .cancel-btn:hover { background: #e0e0e0; }
+
+/* 사원 목록 */
+.emp-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.add-emp-btn {
+  padding: 7px 14px;
+  background: #1a73e8;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+.add-emp-btn:hover { background: #1558b0; }
+
+.emp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+}
+
+.emp-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+.emp-item:hover { background: #f8faff; }
+
+.emp-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.emp-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.emp-meta {
+  font-size: 12px;
+  color: #888;
+}
+
+.emp-item-actions {
+  display: flex;
+  gap: 4px;
+}
+
+/* 폼 2열 */
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+.form-row .form-field { flex: 1; }
+
+.form-field select {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  background: #fff;
+  cursor: pointer;
+}
+.form-field select:focus { border-color: #1a73e8; }

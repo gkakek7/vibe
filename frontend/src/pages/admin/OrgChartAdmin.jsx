@@ -64,7 +64,10 @@ export default function OrgChartAdmin({ onClose }) {
     if (!window.confirm(`"${dept.name}" 부서를 삭제하시겠습니까?`)) return;
     await api.delete(`/departments/${dept.id}`);
     fetchTree();
-    if (editTarget?.id === dept.id) { setEditTarget(null); setForm(EMPTY_FORM); }
+    if (editTarget?.id === dept.id || form.parentId === dept.id) {
+      setEditTarget(null);
+      setForm(EMPTY_FORM);
+    }
   };
 
   const handleSave = async () => {

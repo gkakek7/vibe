@@ -47,6 +47,7 @@ export default function OrgChartAdmin({ onClose }) {
   const [employees, setEmployees] = useState([]);
   const [empForm, setEmpForm]     = useState(EMPTY_EMP);
   const [empTarget, setEmpTarget] = useState(null);
+  const [positions, setPositions] = useState([]);
 
   const fetchTree = async () => {
     const res = await api.get('/departments');
@@ -58,7 +59,10 @@ export default function OrgChartAdmin({ onClose }) {
     setEmployees(res.data);
   };
 
-  useEffect(() => { fetchTree(); }, []);
+  useEffect(() => {
+    fetchTree();
+    api.get('/positions').then((res) => setPositions(res.data));
+  }, []);
 
   /* ── 부서 핸들러 ── */
   const handleSelectDept = (dept) => {
@@ -245,8 +249,12 @@ export default function OrgChartAdmin({ onClose }) {
             <div className="form-row">
               <div className="form-field">
                 <label>직급</label>
-                <input type="text" value={empForm.position} placeholder="직급"
-                  onChange={(e) => setEmpForm({ ...empForm, position: e.target.value })} />
+                <select value={empForm.position} onChange={(e) => setEmpForm({ ...empForm, position: e.target.value })}>
+                  <option value="">선택 안함</option>
+                  {positions.map((pos) => (
+                    <option key={pos.id} value={pos.name}>{pos.name}</option>
+                  ))}
+                </select>
               </div>
               <div className="form-field">
                 <label>권한</label>

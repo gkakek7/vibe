@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import TopNav from '../../components/TopNav';
+import OrgChartAdmin from '../admin/OrgChartAdmin';
 import './PortalPage.css';
 
 const PORTLETS = [
@@ -9,9 +11,11 @@ const PORTLETS = [
 ];
 
 export default function PortalPage() {
+  const [showAdmin, setShowAdmin] = useState(false);
+
   return (
     <div className="portal-layout">
-      <TopNav />
+      <TopNav onAdminClick={() => setShowAdmin(true)} />
       <main className="portal-main">
         <div className="portlet-grid">
           {PORTLETS.map((p) => (
@@ -22,6 +26,7 @@ export default function PortalPage() {
           ))}
         </div>
       </main>
+      {showAdmin && <OrgChartAdmin onClose={() => setShowAdmin(false)} />}
     </div>
   );
 }

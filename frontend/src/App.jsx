@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from './store/authStore';
+import { AuthProvider, useAuth } from './store/authStore.jsx';
 import LoginPage from './pages/login/LoginPage';
 import PortalPage from './pages/portal/PortalPage';
 import OrgChartPage from './pages/orgchart/OrgChartPage';

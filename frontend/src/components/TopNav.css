@@ -65,3 +65,8 @@
 .topnav-user button:hover {
   background: rgba(255,255,255,0.35);
 }
+
+.topnav-admin-btn {
+  padding: 6px 10px !important;
+  font-size: 16px !important;
+}

@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../store/authStore';
+import { useAuth } from '../store/authStore.jsx';
 import './TopNav.css';
 
 const MENUS = [
@@ -9,7 +9,7 @@ const MENUS = [
   { label: '조직도', path: '/orgchart' },
 ];
 
-export default function TopNav() {
+export default function TopNav({ onAdminClick }) {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -38,6 +38,9 @@ export default function TopNav() {
       </ul>
       <div className="topnav-user">
         <span>{user?.name}님</span>
+        {user?.role === 'ROLE_ADMIN' && (
+          <button className="topnav-admin-btn" onClick={onAdminClick} title="관리자">🔒</button>
+        )}
         <button onClick={logout}>로그아웃</button>
       </div>
     </nav>

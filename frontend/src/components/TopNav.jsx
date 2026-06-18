@@ -4,7 +4,7 @@ import './TopNav.css';
 
 const MENUS = [
   { label: '포탈', path: '/' },
-  { label: '전자결재', path: '/approval', external: 'http://localhost:8081' },
+  { label: '전자결재', path: '/approval' },
   { label: '게시판', path: '/board', external: 'http://localhost:3002' },
   { label: '조직도', path: '/orgchart' },
 ];

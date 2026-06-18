@@ -1,0 +1,13 @@
+.approval-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.approval-iframe {
+  flex: 1;
+  border: none;
+  width: 100%;
+  margin-top: 56px;
+  height: calc(100vh - 56px);
+}

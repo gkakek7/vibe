@@ -3,6 +3,7 @@ import { AuthProvider, useAuth } from './store/authStore.jsx';
 import LoginPage from './pages/login/LoginPage';
 import PortalPage from './pages/portal/PortalPage';
 import OrgChartPage from './pages/orgchart/OrgChartPage';
+import ApprovalPage from './pages/approval/ApprovalPage';
 
 function PrivateRoute({ children }) {
   const { user } = useAuth();
@@ -15,6 +16,7 @@ function AppRoutes() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/" element={<PrivateRoute><PortalPage /></PrivateRoute>} />
       <Route path="/orgchart" element={<PrivateRoute><OrgChartPage /></PrivateRoute>} />
+      <Route path="/approval" element={<PrivateRoute><ApprovalPage /></PrivateRoute>} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
